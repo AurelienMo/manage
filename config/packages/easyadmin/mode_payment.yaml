@@ -1,0 +1,19 @@
+easy_admin:
+    entities:
+        ModePayment:
+            class: App\Entity\ModePayment
+            list:
+                fields:
+                    - property: name
+                      label: 'Nom'
+                    - property: updatedBy.fullName
+                      label: 'Mis à jour par'
+                    - property: updatedAt
+                      label: 'Mis à jour le'
+            form:
+                fields:
+                    - property: name
+                      label: 'Nom du moyen de paiement'
+                      type: 'text'
+                      type_options:
+                          required: false

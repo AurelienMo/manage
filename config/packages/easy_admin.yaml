@@ -24,6 +24,9 @@ easy_admin:
                   - entity: 'Bank'
                     label: 'Gestion des banques'
                     icon: 'piggy-bank'
+                  - entity: 'ModePayment'
+                    label: 'Gestion moyens de paiements'
+                    icon: 'wallet'
     site_name: 'Ma gestion bancaire'
     formats:
         number: '%0.2f'
