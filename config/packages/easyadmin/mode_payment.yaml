@@ -2,7 +2,11 @@ easy_admin:
     entities:
         ModePayment:
             class: App\Entity\ModePayment
+            templates:
+                edit: 'admin/ModePayment/edit.html.twig'
+                new: 'admin/ModePayment/new.html.twig'
             list:
+                title: 'Liste des moyens de paiement'
                 fields:
                     - property: name
                       label: 'Nom'

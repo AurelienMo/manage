@@ -2,6 +2,10 @@ easy_admin:
     entities:
         BankAccount:
             class: App\Entity\BankAccount
+            templates:
+                edit: 'admin/BankAccount/edit.html.twig'
+                new: 'admin/BankAccount/new.html.twig'
+                list: 'admin/BankAccount/list.html.twig'
             list:
                 fields:
                     - property: name

@@ -2,7 +2,11 @@ easy_admin:
     entities:
         Bank:
             class: App\Entity\Bank
+            templates:
+                edit: 'admin/Bank/edit.html.twig'
+                new: 'admin/Bank/new.html.twig'
             list:
+                title: 'Liste des banques'
                 fields:
                     - property: name
                       label: 'Nom'
