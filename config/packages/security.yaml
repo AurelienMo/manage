@@ -1,0 +1,22 @@
+security:
+    encoders:
+        App\Entity\User:
+            algorithm: bcrypt
+    providers:
+        user_provider:
+            entity:
+                class: App\Entity\User
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: true
+            guard:
+                authenticators:
+                    - App\Domain\Security\Login\LoginAuthenticator
+            logout:
+                target: /
+                path: /se-deconnecter
+    access_control:
+         - { path: ^/management, roles: ROLE_USER }

@@ -1,0 +1,4 @@
+easy_admin_bundle:
+    resource: '../../src/ManagementAdmin/AdminController.php'
+    prefix: /management
+    type: annotation
