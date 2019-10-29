@@ -170,4 +170,9 @@ class User extends AbstractEntity implements SecurityUserInterface, AuthoredInte
 
         return $user;
     }
+
+    public function getFullName(): string
+    {
+        return sprintf('%s %s', $this->firstname, $this->lastname);
+    }
 }

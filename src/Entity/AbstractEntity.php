@@ -39,4 +39,12 @@ abstract class AbstractEntity implements TimestampableInterface
         $this->createdAt = new DateTime();
         $this->id = Uuid::uuid4()->toString();
     }
+
+    /**
+     * @return string
+     */
+    public function getId(): string
+    {
+        return $this->id;
+    }
 }

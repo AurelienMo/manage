@@ -1,0 +1,21 @@
+easy_admin:
+    entities:
+        Bank:
+            class: App\Entity\Bank
+            list:
+                fields:
+                    - property: name
+                      label: 'Nom'
+                    - property: slug
+                      label: 'Identifiant court'
+                    - property: updatedBy.fullName
+                      label: 'Mis à jour par'
+                    - property: updatedAt
+                      label: 'Mis à jour le'
+            form:
+                fields:
+                    - property: name
+                      label: 'Nom de la banque'
+                      type: 'text'
+                      type_options:
+                          required: false
