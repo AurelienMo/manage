@@ -15,6 +15,8 @@ namespace App\Entity;
 
 use App\Entity\Interfaces\AuthoredInterface;
 use App\Entity\Traits\AuthoredTrait;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
 
@@ -63,9 +65,17 @@ class User extends AbstractEntity implements SecurityUserInterface, AuthoredInte
      */
     protected $roles;
 
+    /**
+     * @var BankAccount[]|Collection
+     *
+     * @ORM\OneToMany(targetEntity="App\Entity\BankAccount", mappedBy="owner", cascade={"persist", "all"})
+     */
+    protected $bankAccounts;
+
     public function __construct()
     {
         $this->roles[] = 'ROLE_USER';
+        $this->bankAccounts = new ArrayCollection();
         parent::__construct();
     }
 
@@ -174,5 +184,26 @@ class User extends AbstractEntity implements SecurityUserInterface, AuthoredInte
     public function getFullName(): string
     {
         return sprintf('%s %s', $this->firstname, $this->lastname);
+    }
+
+    /**
+     * @return BankAccount[]|Collection
+     */
+    public function getBankAccounts()
+    {
+        return $this->bankAccounts;
+    }
+
+    public function addBankAccount(BankAccount $account)
+    {
+        $this->bankAccounts->add($account);
+        $account->setOwner($this);
+
+        return $this;
+    }
+
+    public function removeBankAccount(BankAccount $account)
+    {
+        $this->bankAccounts->removeElement($account);
     }
 }

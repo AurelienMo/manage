@@ -1,0 +1,54 @@
+easy_admin:
+    entities:
+        BankAccount:
+            class: App\Entity\BankAccount
+            list:
+                fields:
+                    - property: name
+                      label: 'Nom'
+                    - property: owner.fullName
+                      label: 'Propriétaire'
+                    - property: balance
+                      label: 'Solde'
+                    - property: updatedAt
+                      label: 'Mis à jour le'
+
+            form:
+                fields:
+                    - type: 'group'
+                      columns: 6
+                      label: 'Informations générales'
+                    - property: name
+                      label: 'Nom du compte'
+                      type: 'text'
+                      type_options:
+                          required: false
+                    - property: bank
+                      type: 'easyadmin_autocomplete'
+                      type_options:
+                          class: 'App\Entity\Bank'
+                    - property: balance
+                      type: number
+                    - type: 'group'
+                      columns: 6
+                      label: 'Coordonnées bancaires'
+                    - property: bankInformation.bankCode
+                      type: 'text'
+                      label: 'Code banque'
+                    - property: bankInformation.boxCode
+                      type: 'text'
+                      label: 'Code guichet'
+                    - property: bankInformation.numberAccount
+                      type: 'text'
+                      label: 'N° compte'
+                    - property: bankInformation.ribKey
+                      type: 'text'
+                      label: 'Clé RIB'
+                    - property: bankInformation.iban
+                      type: 'text'
+                      label: 'IBAN'
+                    - property: bankInformation.bic
+                      type: 'text'
+                      label: 'BIC'
+
+

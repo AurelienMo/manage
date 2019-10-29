@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace App\ManagementAdmin;
 
+use App\Entity\BankAccount;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\EasyAdminController;
 
 /**
@@ -20,4 +21,17 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\EasyAdminController;
  */
 class AdminController extends EasyAdminController
 {
+    protected function createBankAccountListQueryBuilder(
+        $entityClass,
+        $sortDirection,
+        $sortField = null,
+        $dqlFilter = null
+    ) {
+        return parent::createListQueryBuilder(
+            $entityClass,
+            $sortDirection,
+            $sortField,
+            sprintf("entity.owner = '%s'", $this->getUser()->getId())
+        );
+    }
 }

@@ -39,4 +39,9 @@ class Bank extends AbstractEntity implements TimestampableInterface, SluggableIn
     {
         return 'name';
     }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 }

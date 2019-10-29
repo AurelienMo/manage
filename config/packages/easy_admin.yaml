@@ -18,6 +18,12 @@ easy_admin:
         name_property_path: fullName
     design:
         menu:
+            - label: 'Mon activité bancaire'
+              icons: 'info-circle'
+              children:
+                  - entity: 'BankAccount'
+                    label: 'Mes comptes bancaires'
+                    icon: 'money-check-alt'
             - label: 'Configuration'
               icon: 'cogs'
               children:
